@@ -32,6 +32,7 @@ using System.Collections.Generic;
 
 namespace JBLib.Extensions
 {
+
     public static class WildcardMatch
     {
         public static bool EqualsWildcard(this string text, string wildcardString)

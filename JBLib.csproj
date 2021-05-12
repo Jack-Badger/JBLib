@@ -42,6 +42,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\portable-net40+sl4+win8+wp8\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,10 +53,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Document.cs" />
+    <Compile Include="Equations.cs" />
+    <Compile Include="Evaluate\EvalException.cs" />
+    <Compile Include="Evaluate\FunctionEventArgs.cs" />
+    <Compile Include="Evaluate\FunctionStatus.cs" />
+    <Compile Include="Evaluate\SymbolEventArgs.cs" />
+    <Compile Include="Evaluate\SymbolStatus.cs" />
+    <Compile Include="Extensions\DoubleEx.cs" />
     <Compile Include="Extensions\FeatureEx.cs" />
     <Compile Include="Extensions\ModelDocEx.cs" />
+    <Compile Include="Function.cs" />
     <Compile Include="IDocument.cs" />
+    <Compile Include="IEquations.cs" />
     <Compile Include="ISelections.cs" />
+    <Compile Include="Evaluate\Eval.cs" />
+    <Compile Include="Evaluate\TextParser.cs" />
+    <Compile Include="Evaluate\MathDelegates.cs" />
     <Compile Include="Selections.cs" />
     <Compile Include="JBSW.cs" />
     <Compile Include="IJBSW.cs" />
@@ -109,7 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="JackBadger.pfx" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\RegAsm /nologo /verbose /codebase /tlb "$(ProjectDir)$(OutDir)JBLib.dll"</PostBuildEvent>
