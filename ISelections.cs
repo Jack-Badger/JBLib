@@ -28,13 +28,13 @@ namespace JBLib
         /// Collects the specified type.
         /// </summary>
         /// <param name="type">The type.</param>
-        void Collect([MarshalAs(UnmanagedType.I4)] swSelectType_e type);
+        void MarkTypeForCollection([MarshalAs(UnmanagedType.I4)] swSelectType_e type);
 
         /// <summary>Populates the specified sel MGR.</summary>
         /// <param name="selMgr">The Selection Manager.</param>
         /// <returns>
         ///   <br />
         /// </returns>
-        Scripting.Dictionary Populate(ISelectionMgr selMgr);
+        Scripting.Dictionary CreateScriptingDictionary(ISelectionMgr selMgr);
     }
 }

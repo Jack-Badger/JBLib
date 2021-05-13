@@ -29,6 +29,7 @@ namespace JBLib.Extensions
             yield break;
         }
 
-        public static IEnumerable<(string filename, bool linked)> GetAttachmentsEx(this IModelDoc2 model) => model.Extension.GetAttachmentsEx();
+        public static IEnumerable<(string filename, bool linked)>
+            GetAttachmentsEx(this IModelDoc2 model) => model.Extension.GetAttachmentsEx();
     }
 }

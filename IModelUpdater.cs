@@ -12,11 +12,11 @@ namespace JBLib
     [TypeLibImportClass(typeof(ModelUpdater))]
     public interface IModelUpdater
     {
-        string[] AttachmentExtensions();
+        string[] AttachedDocumentExtensions();
 
-        int AttachmentsCount();
+        int AttachedDocumentsCount();
 
-        string[] GetAttachments(string extension, out bool[] linked);
+        string[] AttachedDocuments(string fileExtension, out bool[] isLinked);
 
         bool Initialize(ISldWorks app);
     }

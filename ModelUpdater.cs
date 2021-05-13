@@ -39,26 +39,26 @@ namespace JBLib
         }
 
         /// <inheritdoc/>
-        public int AttachmentsCount() => Attachments.TotalCount;
+        public int AttachedDocumentsCount() => Attachments.TotalCount;
 
         /// <inheritdoc/>
-        public string[] AttachmentExtensions() => Attachments.Extensions.ToArray();
+        public string[] AttachedDocumentExtensions() => Attachments.Extensions.ToArray();
 
         /// <inheritdoc/>
-        public string[] GetAttachments(string extension, out bool[] linked)
+        public string[] AttachedDocuments(string fileExtension, out bool[] isLinkedArray)
         {
-            var filepaths = new List<string>();
-            var isLinked = new List<bool>();
+            var filePathsList = new List<string>();
+            var isLinkedList = new List<bool>();
 
-            foreach (var (f, l) in Attachments[extension])
+            foreach (var (f, l) in Attachments[fileExtension])
             {
-                filepaths.Add(f);
-                isLinked.Add(l);
+                filePathsList.Add(f);
+                isLinkedList.Add(l);
             }
 
-            linked = isLinked.ToArray();
+            isLinkedArray = isLinkedList.ToArray();
 
-            return filepaths.ToArray();
+            return filePathsList.ToArray();
         }
     }
 }
