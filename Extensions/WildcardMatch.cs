@@ -1,4 +1,5 @@
-﻿// <copyright file="WildcardMatch.cs" company="H.A. Sullivan">
+﻿#pragma warning disable SA1636 // File header copyright text should match
+// <copyright file="WildcardMatch.cs" company="H.A. Sullivan">
 // Copyright (c) 2016 All Rights Reserved
 // </copyright>
 // <author>H.A. Sullivan</author>
@@ -28,10 +29,10 @@
 // SOFTWARE.
 //
 
-using System.Collections.Generic;
-
 namespace JBLib.Extensions
+#pragma warning restore SA1636 // File header copyright text should match
 {
+    using System.Collections.Generic;
 
     public static class WildcardMatch
     {
@@ -57,7 +58,7 @@ namespace JBLib.Extensions
             word = text.ToCharArray();
             filter = wildcardString.ToCharArray();
 
-            //Set which case will be used (0 = no wildcards, 1 = only ?, 2 = only *, 3 = both ? and *
+            // Set which case will be used (0 = no wildcards, 1 = only ?, 2 = only *, 3 = both ? and *
             for (int i = 0; i < filter.Length; i++)
             {
                 if (filter[i] == '?')
@@ -95,10 +96,11 @@ namespace JBLib.Extensions
                             isLike = false;
                         }
                     }
+
                     break;
 
                 case 2:
-                    //Search for matches until first *
+                    // Search for matches until first *
                     for (int i = 0; i < filter.Length; i++)
                     {
                         if (filter[i] != '*')
@@ -114,7 +116,8 @@ namespace JBLib.Extensions
                             break;
                         }
                     }
-                    //Search Tail for matches until first *
+
+                    // Search Tail for matches until first *
                     for (int i = 0; i < filter.Length; i++)
                     {
                         if (filter[filter.Length - 1 - i] != '*')
@@ -123,7 +126,6 @@ namespace JBLib.Extensions
                             {
                                 return false;
                             }
-
                         }
                         else
                         {
@@ -132,8 +134,7 @@ namespace JBLib.Extensions
                         }
                     }
 
-
-                    //Create a reverse word and filter for searching in reverse. The reversed word and filter do not include already checked chars
+                    // Create a reverse word and filter for searching in reverse. The reversed word and filter do not include already checked chars
                     reversedWord = new char[word.Length - lastCheckedHeadIndex - lastCheckedTailIndex];
                     reversedFilter = new char[filter.Length - lastCheckedHeadIndex - lastCheckedTailIndex];
 
@@ -141,12 +142,13 @@ namespace JBLib.Extensions
                     {
                         reversedWord[i] = word[word.Length - (i + 1) - lastCheckedTailIndex];
                     }
+
                     for (int i = 0; i < reversedFilter.Length; i++)
                     {
                         reversedFilter[i] = filter[filter.Length - (i + 1) - lastCheckedTailIndex];
                     }
 
-                    //Cut up the filter into seperate patterns, exclude * as they are not longer needed
+                    // Cut up the filter into seperate patterns, exclude * as they are not longer needed
                     for (int i = 0; i < reversedFilter.Length; i++)
                     {
                         if (reversedFilter[i] == '*')
@@ -158,18 +160,19 @@ namespace JBLib.Extensions
                                 {
                                     pattern[j] = reversedFilter[currentPatternStartIndex + j];
                                 }
+
                                 reversedPatterns.Add(pattern);
                             }
+
                             currentPatternStartIndex = i + 1;
                         }
                     }
 
-                    //Search for the patterns
+                    // Search for the patterns
                     for (int i = 0; i < reversedPatterns.Count; i++)
                     {
                         for (int j = 0; j < reversedPatterns[i].Length; j++)
                         {
-
                             if (reversedPatterns[i].Length - 1 - j > reversedWord.Length - 1 - reversedWordIndex)
                             {
                                 return false;
@@ -189,11 +192,12 @@ namespace JBLib.Extensions
                             }
                         }
                     }
+
                     break;
 
                 case 3:
-                    //Same as Case 2 except ? is considered a match
-                    //Search Head for matches util first *
+                    // Same as Case 2 except ? is considered a match
+                    // Search Head for matches util first *
                     for (int i = 0; i < filter.Length; i++)
                     {
                         if (filter[i] != '*')
@@ -209,7 +213,8 @@ namespace JBLib.Extensions
                             break;
                         }
                     }
-                    //Search Tail for matches until first *
+
+                    // Search Tail for matches until first *
                     for (int i = 0; i < filter.Length; i++)
                     {
                         if (filter[filter.Length - 1 - i] != '*')
@@ -218,7 +223,6 @@ namespace JBLib.Extensions
                             {
                                 return false;
                             }
-
                         }
                         else
                         {
@@ -226,6 +230,7 @@ namespace JBLib.Extensions
                             break;
                         }
                     }
+
                     // Reverse and trim word and filter
                     reversedWord = new char[word.Length - lastCheckedHeadIndex - lastCheckedTailIndex];
                     reversedFilter = new char[filter.Length - lastCheckedHeadIndex - lastCheckedTailIndex];
@@ -234,6 +239,7 @@ namespace JBLib.Extensions
                     {
                         reversedWord[i] = word[word.Length - (i + 1) - lastCheckedTailIndex];
                     }
+
                     for (int i = 0; i < reversedFilter.Length; i++)
                     {
                         reversedFilter[i] = filter[filter.Length - (i + 1) - lastCheckedTailIndex];
@@ -250,23 +256,23 @@ namespace JBLib.Extensions
                                 {
                                     pattern[j] = reversedFilter[currentPatternStartIndex + j];
                                 }
+
                                 reversedPatterns.Add(pattern);
                             }
 
                             currentPatternStartIndex = i + 1;
                         }
                     }
-                    //Search for the patterns
+
+                    // Search for the patterns
                     for (int i = 0; i < reversedPatterns.Count; i++)
                     {
                         for (int j = 0; j < reversedPatterns[i].Length; j++)
                         {
-
                             if (reversedPatterns[i].Length - 1 - j > reversedWord.Length - 1 - reversedWordIndex)
                             {
                                 return false;
                             }
-
 
                             if (reversedPatterns[i][j] != '?' && reversedPatterns[i][j] != reversedWord[reversedWordIndex + j])
                             {
@@ -282,8 +288,10 @@ namespace JBLib.Extensions
                             }
                         }
                     }
+
                     break;
             }
+
             return isLike;
         }
 

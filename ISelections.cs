@@ -1,9 +1,13 @@
-﻿using SldWorks;
-using SwConst;
-using System.Runtime.InteropServices;
+﻿// <copyright file="ISelections.cs" company="Jack Badger Ltd">
+// Copyright (c) Jack Badger Ltd. All rights reserved.
+// </copyright>
 
 namespace JBLib
 {
+    using System.Runtime.InteropServices;
+    using SldWorks;
+    using SwConst;
+
     /// <summary>
     ///   <br />
     /// </summary>
@@ -12,7 +16,6 @@ namespace JBLib
     [TypeLibImportClass(typeof(Selections))]
     public interface ISelections
     {
-
         /// <summary>
         /// Gets or sets a value indicating whether [collect all types].
         /// </summary>
@@ -21,7 +24,6 @@ namespace JBLib
         /// </value>
         bool CollectAllTypes { get; set; }
 
-
         /// <summary>
         /// Collects the specified type.
         /// </summary>
@@ -29,7 +31,7 @@ namespace JBLib
         void Collect([MarshalAs(UnmanagedType.I4)] swSelectType_e type);
 
         /// <summary>Populates the specified sel MGR.</summary>
-        /// <param name="selMgr">The Selection Manager</param>
+        /// <param name="selMgr">The Selection Manager.</param>
         /// <returns>
         ///   <br />
         /// </returns>

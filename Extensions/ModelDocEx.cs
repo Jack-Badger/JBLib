@@ -1,11 +1,12 @@
-﻿using SldWorks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// <copyright file="ModelDocEx.cs" company="Jack Badger Ltd">
+// Copyright (c) Jack Badger Ltd. All rights reserved.
+// </copyright>
 
 namespace JBLib.Extensions
 {
+    using System.Collections.Generic;
+    using SldWorks;
+
     public static class ModelDocEx
     {
         public static IEnumerable<IFeature> Features(this IModelDoc2 model)
@@ -29,6 +30,5 @@ namespace JBLib.Extensions
         }
 
         public static IEnumerable<(string filename, bool linked)> GetAttachmentsEx(this IModelDoc2 model) => model.Extension.GetAttachmentsEx();
-
     }
 }

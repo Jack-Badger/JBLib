@@ -1,13 +1,15 @@
-﻿using SldWorks;
-using SwConst;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
+﻿// <copyright file="Selections.cs" company="Jack Badger Ltd">
+// Copyright (c) Jack Badger Ltd. All rights reserved.
+// </copyright>
 
 namespace JBLib
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.InteropServices;
+    using SldWorks;
+    using SwConst;
+
     /// <summary>
     ///   <br />
     /// </summary>
@@ -17,10 +19,13 @@ namespace JBLib
     [ProgId("JBLib.Selections")]
     public class Selections : ISelections
     {
-        public Selections() {}
-
         private readonly ISet<swSelectType_e> typesToCollect = new HashSet<swSelectType_e>();
 
+        public Selections()
+        {
+        }
+
+        /// <inheritdoc/>
         public bool CollectAllTypes { get; set; } = true;
 
         /// <summary>
@@ -31,7 +36,7 @@ namespace JBLib
         /// TODO Edit XML Comment Template for Collect
         public void Collect([MarshalAs(UnmanagedType.I4)] swSelectType_e type)
         {
-            if (type == 0) //swSelectType_e.swSelNOTHING
+            if (type == swSelectType_e.swSelNOTHING)
             {
                 typesToCollect.Clear();
             }
@@ -41,6 +46,7 @@ namespace JBLib
             }
         }
 
+        /// <inheritdoc/>
         public Scripting.Dictionary Populate(ISelectionMgr selMgr)
         {
             var scriptDict = new Scripting.Dictionary();
@@ -57,7 +63,6 @@ namespace JBLib
 
                     if (CollectAllTypes || typesToCollect.Contains(key))
                     {
-
                         if (!dict.ContainsKey(key))
                         {
                             dict.Add(key, new List<object>());
@@ -74,6 +79,7 @@ namespace JBLib
                     scriptDict.Add(key, dict[key].ToArray());
                 }
             }
+
             return scriptDict;
         }
     }

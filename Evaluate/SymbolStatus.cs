@@ -11,8 +11,8 @@
 namespace JBLib.Evaluate
 {
     public enum SymbolStatus
-	{
-		OK,
-		UndefinedSymbol,
-	}
+    {
+        OK,
+        UndefinedSymbol,
+    }
 }

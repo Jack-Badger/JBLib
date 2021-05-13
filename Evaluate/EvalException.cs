@@ -1,24 +1,19 @@
-﻿//////////////////////////////////////////////////////////////////////////////
-// This source code and all associated files and resources are copyrighted by
-// the author(s). This source code and all associated files and resources may
-// be used as long as they are used according to the terms and conditions set
-// forth in The Code Project Open License (CPOL), which may be viewed at
-// http://www.blackbeltcoder.com/Legal/Licenses/CPOL.
-//
-// Copyright (c) 2010 Jonathan Wood
-//
-
-using System;
+﻿// <copyright file="EvalException.cs" company="Jack Badger Ltd">
+// Copyright (c) Jack Badger Ltd. All rights reserved.
+// </copyright>
 
 namespace JBLib.Evaluate
 {
+    using System;
+
     public class EvalException : Exception
     {
-        public int Column { get; set; }
-
-        public EvalException(string message, int column) : base(message)
+        public EvalException(string message, int column)
+            : base(message)
         {
             Column = column;
         }
+
+        public int Column { get; set; }
     }
 }

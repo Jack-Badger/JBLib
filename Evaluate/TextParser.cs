@@ -7,11 +7,11 @@
 //
 // Copyright (c) 2010 Jonathan Wood
 //
-using System;
-using System.Linq;
-
 namespace JBLib.Evaluate
 {
+    using System;
+    using System.Linq;
+
     public class TextParser
     {
         private string text;
@@ -27,7 +27,7 @@ namespace JBLib.Evaluate
         public int Remaining
             => text.Length - pos;
 
-        public static char NullChar = (char)0;
+        private static readonly char NullChar = (char)0;
 
         public TextParser()
             => Reset(null);
@@ -36,6 +36,7 @@ namespace JBLib.Evaluate
             => Reset(text);
 
         public void Reset() => pos = 0;
+
         public void Reset(string text)
         {
             this.text = text ?? string.Empty;

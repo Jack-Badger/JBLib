@@ -1,12 +1,13 @@
-﻿using SldWorks;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="ModelDocExtensionEx.cs" company="Jack Badger Ltd">
+// Copyright (c) Jack Badger Ltd. All rights reserved.
+// </copyright>
 
 namespace JBLib.Extensions
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using SldWorks;
+
     public static class ModelDocExtensionEx
     {
         public static IEnumerable<(string filename, bool linked)> GetAttachmentsEx(this IModelDocExtension modelDocExtension)

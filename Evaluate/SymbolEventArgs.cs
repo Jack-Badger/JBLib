@@ -14,11 +14,11 @@ namespace JBLib.Evaluate
 {
     // ProcessSymbol arguments
     public class SymbolEventArgs : EventArgs
-	{
-		public string Name { get; set; }
+    {
+        public string Name { get; set; }
 
-		public double Result { get; set; }
+        public double Result { get; set; }
 
-		public SymbolStatus Status { get; set; }
-	}
+        public SymbolStatus Status { get; set; }
+    }
 }

@@ -8,11 +8,11 @@
 // Copyright (c) 2010 Jonathan Wood
 //
 
-using System;
-using System.Collections.Generic;
-
 namespace JBLib.Evaluate
 {
+    using System;
+    using System.Collections.Generic;
+
     // ProcessFunction arguments
     public class FunctionEventArgs : EventArgs
     {
