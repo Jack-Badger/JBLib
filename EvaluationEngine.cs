@@ -11,15 +11,13 @@ namespace JBLib
     [ProgId("JBLib.Equations")]
     [ClassInterface(ClassInterfaceType.None)]
     [Guid("BABB2BBA-C5CB-45FD-B4C8-BD000EFAB404")]
-    public class Equations : IEquations
+    public class EvaluationEngine : IEvaluationEngine
     {
-        private ISldWorks app;
-
         protected Eval eval;
 
-        private IDictionary<string, double> symbols;
+        private readonly IDictionary<string, double> symbols;
 
-        public Equations()
+        public EvaluationEngine()
         {
             eval = new Eval();
             eval.ProcessFunction += Eval_ProcessFunction;
@@ -30,11 +28,6 @@ namespace JBLib
                 {"pi", Math.PI },
                 {"rob", 369 },
             };
-        }
-
-        public void Init(ISldWorks app)
-        {
-            this.app = app ?? throw new ArgumentNullException(nameof(app));
         }
 
         private void Eval_ProcessSymbol(object sender, SymbolEventArgs e)
