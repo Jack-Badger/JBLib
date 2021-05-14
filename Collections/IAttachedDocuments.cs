@@ -2,7 +2,7 @@
 // Copyright (c) Jack Badger Ltd. All rights reserved.
 // </copyright>
 
-namespace JBLib
+namespace JBLib.Collections
 {
     using System.Runtime.InteropServices;
     using SldWorks;

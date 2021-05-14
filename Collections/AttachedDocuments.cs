@@ -2,13 +2,14 @@
 // Copyright (c) Jack Badger Ltd. All rights reserved.
 // </copyright>
 
-namespace JBLib
+namespace JBLib.Collections
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
+    using JBLib.Collections.Generic;
     using JBLib.Extensions;
     using SldWorks;
 
@@ -40,7 +41,7 @@ namespace JBLib
         /// <inheritdoc/>
         public void SelectionCriteria(string fileExtensions, AttachedDocumentOption option)
         {
-            docs.FilterSet = (fileExtensions == string.Empty) ? new HashSet<string>()
+            docs.FilterSet = fileExtensions == string.Empty ? new HashSet<string>()
                 : new HashSet<string>(fileExtensions.Split(new char[] { ' ', ',' }));
 
             docs.Behaviour = (FilterOption)option;
@@ -76,7 +77,7 @@ namespace JBLib
         private string GenerateKey((string filepath, bool) item)
         {
             string ext = Path.GetExtension(item.filepath);
-            return (ext == string.Empty) ? "_NO_EXTENSION_" : ext.Substring(1);
+            return ext == string.Empty ? "_NO_EXTENSION_" : ext.Substring(1);
         }
     }
 }

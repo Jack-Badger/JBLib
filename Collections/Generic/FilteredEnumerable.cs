@@ -2,7 +2,7 @@
 // Copyright (c) Jack Badger Ltd. All rights reserved.
 // </copyright>
 
-namespace JBLib
+namespace JBLib.Collections.Generic
 {
     using System;
     using System.Collections.Generic;
@@ -25,7 +25,11 @@ namespace JBLib
         /// TODO Edit XML Comment Template for keyGenerator
         private readonly Func<TItem, TKey> keyGenerator;
 
-        internal void Clear() => dic.Clear();
+        internal void Clear()
+        {
+            dic.Clear();
+            TotalItemCount = 0;
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FilteredEnumerable{TKey, TItem}"/> class.
@@ -82,18 +86,7 @@ namespace JBLib
             {
                 var key = keyGenerator(item);
 
-                // i - ignore (select = not ignore)
-                // c - contains
-                //
-                // i c
-                // 0 0 | 0   select/not contains => false
-                // 0 1 | 1   select/contains => true
-                // 1 0 | 1   ignore/not contains => true
-                // 1 1 | 0   ignore/contains => false
-                //
-                // XOR
-                //
-                if ((Behaviour == FilterOption.Ignore) ^ FilterSet.Contains(key))
+                if (Behaviour == FilterOption.Ignore ^ FilterSet.Contains(key))
                 {
                     if (!dic.ContainsKey(key))
                     {
