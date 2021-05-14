@@ -4,10 +4,10 @@
 
 namespace JBLib.Evaluate
 {
+    using JBLib.Extensions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using JBLib.Extensions;
 
     public static class MathDelegates
     {

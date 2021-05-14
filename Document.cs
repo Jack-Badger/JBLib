@@ -4,12 +4,12 @@
 
 namespace JBLib
 {
-    using System;
-    using System.Linq;
-    using System.Runtime.InteropServices;
     using JBLib.Extensions;
     using SldWorks;
     using SwConst;
+    using System;
+    using System.Linq;
+    using System.Runtime.InteropServices;
 
     [ComVisible(true)]
     [Guid("82F99B69-DFB1-438A-8E02-9C02C5D69827")]

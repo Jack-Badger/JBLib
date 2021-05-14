@@ -4,10 +4,10 @@
 
 namespace JBLib
 {
+    using JBLib.Evaluate;
     using System;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
-    using JBLib.Evaluate;
 
     [ComVisible(true)]
     [ProgId("JBLib.Equations")]

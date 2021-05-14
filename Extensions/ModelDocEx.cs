@@ -4,8 +4,8 @@
 
 namespace JBLib.Extensions
 {
-    using System.Collections.Generic;
     using SldWorks;
+    using System.Collections.Generic;
 
     public static class ModelDocEx
     {

@@ -4,10 +4,10 @@
 
 namespace JBLib.Extensions
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using SldWorks;
     using SwConst;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public static class FeatureEx
     {

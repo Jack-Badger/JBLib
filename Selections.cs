@@ -4,11 +4,11 @@
 
 namespace JBLib
 {
+    using SldWorks;
+    using SwConst;
     using System;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
-    using SldWorks;
-    using SwConst;
 
     /// <summary>
     ///   <br />

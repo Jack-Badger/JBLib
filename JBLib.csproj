@@ -94,6 +94,7 @@
     <Compile Include="Extensions\FeatureEx.cs" />
     <Compile Include="Extensions\ModelDocEx.cs" />
     <Compile Include="Extensions\ModelDocExtensionEx.cs" />
+    <Compile Include="FilteredEnumerable.cs" />
     <Compile Include="IDocument.cs" />
     <Compile Include="IEvaluationEngine.cs" />
     <Compile Include="IModelUpdater.cs" />

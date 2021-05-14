@@ -4,8 +4,8 @@
 
 namespace JBLib
 {
-    using System.Runtime.InteropServices;
     using SldWorks;
+    using System.Runtime.InteropServices;
 
     [ComVisible(true)]
     [Guid("97717CFA-B0E8-4C46-863F-287099ACEF88")]

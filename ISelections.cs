@@ -4,9 +4,9 @@
 
 namespace JBLib
 {
-    using System.Runtime.InteropServices;
     using SldWorks;
     using SwConst;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     ///   <br />
