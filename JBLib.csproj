@@ -97,12 +97,12 @@
     <Compile Include="FilteredEnumerable.cs" />
     <Compile Include="IDocument.cs" />
     <Compile Include="IEvaluationEngine.cs" />
-    <Compile Include="IModelUpdater.cs" />
+    <Compile Include="IAttachedDocuments.cs" />
     <Compile Include="ISelections.cs" />
     <Compile Include="Evaluate\Eval.cs" />
     <Compile Include="Evaluate\TextParser.cs" />
     <Compile Include="Evaluate\MathDelegates.cs" />
-    <Compile Include="ModelUpdater.cs" />
+    <Compile Include="AttachedDocuments.cs" />
     <Compile Include="Selections.cs" />
     <Compile Include="JBSW.cs" />
     <Compile Include="IJBSW.cs" />
