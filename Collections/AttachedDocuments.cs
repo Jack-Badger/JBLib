@@ -26,15 +26,15 @@ namespace JBLib.Collections
     [ClassInterface(ClassInterfaceType.None)]
     public class AttachedDocuments : IAttachedDocuments
     {
-        private readonly FilteredEnumerable<string, (string, bool)> docs;
+        private readonly FilteredEnumerable<string, (string filepath, bool isLinked)> docs;
 
         public AttachedDocuments()
         {
-            docs = new FilteredEnumerable<string, (string, bool)>(GenerateKey);
+            docs = new FilteredEnumerable<string, (string filepath, bool isLinked)>(keyGenerator: GetFileExtension);
         }
 
         /// <inheritdoc/>
-        public int SelectAttachments(IModelDoc2 model) => docs.AddRange(model.GetAttachmentsEx());
+        public int SelectAttachments(IModelDoc2 model) => docs.AddRange(model?.GetAttachmentsEx());
 
         public void ClearSelections() => docs.Clear();
 
@@ -57,24 +57,24 @@ namespace JBLib.Collections
         public int SelectedCount(string fileExtension) => docs[fileExtension].Count();
 
         /// <inheritdoc/>
-        public int SelectedDocuments(string fileExtension, out string[] filePaths, out bool[] isLinkedArray)
+        public int SelectedDocuments(string fileExtension, out string[] filepaths, out bool[] isLinked)
         {
-            var filePathsList = new List<string>();
+            var filepathsList = new List<string>();
             var isLinkedList = new List<bool>();
 
             foreach (var (f, l) in docs[fileExtension])
             {
-                filePathsList.Add(f);
+                filepathsList.Add(f);
                 isLinkedList.Add(l);
             }
 
-            filePaths = filePathsList.ToArray();
-            isLinkedArray = isLinkedList.ToArray();
+            filepaths = filepathsList.ToArray();
+            isLinked = isLinkedList.ToArray();
 
-            return filePaths.Length;
+            return filepaths.Length;
         }
 
-        private string GenerateKey((string filepath, bool) item)
+        private string GetFileExtension((string filepath, bool) item)
         {
             string ext = Path.GetExtension(item.filepath);
             return ext == string.Empty ? "_NO_EXTENSION_" : ext.Substring(1);

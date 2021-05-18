@@ -305,7 +305,7 @@ namespace JBLib.Evaluate
         protected string ParseSymbolToken(TextParser parser)
         {
             int start = parser.Position;
-            while (char.IsLetterOrDigit(parser.Peek()) || parser.Peek() == '_')
+            while (char.IsLetterOrDigit(parser.Peek()) || parser.Peek() == '_' || parser.Peek() == '@')
             {
                 parser.MoveAhead();
             }

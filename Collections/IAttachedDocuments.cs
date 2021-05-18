@@ -18,7 +18,7 @@ namespace JBLib.Collections
 
         int SelectedCount(string fileExtension);
 
-        int SelectedDocuments(string fileExtension, out string[] filePaths, out bool[] isLinkedArray);
+        int SelectedDocuments(string fileExtension, out string[] filePaths, out bool[] isLinked);
 
         string[] SelectedFileExtensions();
 

@@ -82,9 +82,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attachments.cs" />
     <Compile Include="Document.cs" />
-    <Compile Include="EvaluationEngine.cs" />
+    <Compile Include="Equations\Equation.cs" />
+    <Compile Include="Equations\EquationJsonConverter.cs" />
+    <Compile Include="Equations\EquationsJsonConverter.cs" />
+    <Compile Include="Equations\EquationSolver.cs" />
     <Compile Include="Evaluate\EvalException.cs" />
     <Compile Include="Evaluate\FunctionEventArgs.cs" />
     <Compile Include="Evaluate\FunctionStatus.cs" />
@@ -96,7 +98,7 @@
     <Compile Include="Extensions\ModelDocExtensionEx.cs" />
     <Compile Include="Collections\Generic\FilteredEnumerable.cs" />
     <Compile Include="IDocument.cs" />
-    <Compile Include="IEvaluationEngine.cs" />
+    <Compile Include="IEquationSolver.cs" />
     <Compile Include="Collections\IAttachedDocuments.cs" />
     <Compile Include="ISelections.cs" />
     <Compile Include="Evaluate\Eval.cs" />
@@ -108,7 +110,7 @@
     <Compile Include="IJBSW.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\WildcardMatch.cs" />
-    <Compile Include="EquationsDocument.cs" />
+    <Compile Include="Equations\Equations.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Scripting">
