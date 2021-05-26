@@ -7,6 +7,7 @@ namespace JBLib
     using System;
     using System.Linq;
     using System.Runtime.InteropServices;
+    using JBLib.Collections;
     using JBLib.Extensions;
     using SldWorks;
     using SwConst;
@@ -19,6 +20,8 @@ namespace JBLib
     {
         private IModelDoc2 model;
 
+        public IAttachedDocuments AttachedDocuments { get; private set; }
+
         public Document()
         {
         }
@@ -30,6 +33,17 @@ namespace JBLib
         public void Init(IModelDoc2 model)
         {
             Model = model ?? throw new ArgumentNullException(nameof(model));
+
+            AttachedDocuments = new AttachedDocuments();
+
+            AttachedDocuments.SelectionCriteria("json", AttachedDocumentOption.Select);
+
+            AttachedDocuments.SelectAttachments(model);
+        }
+
+        public void Update()
+        {
+            
         }
 
         /// <inheritdoc/>
