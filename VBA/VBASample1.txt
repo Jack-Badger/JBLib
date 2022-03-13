@@ -1,0 +1,47 @@
+Option Explicit
+
+Dim swApp As SldWorks.SldWorks
+
+Sub main()
+
+    Set swApp = Application.SldWorks
+    
+    Dim swModel As SldWorks.ModelDoc2
+    Set swModel = swApp.ActiveDoc
+    
+    Dim jbSels As New JBLib.Selections
+    
+    jbSels.CollectAllTypes = False
+    jbSels.MarkTypeForCollection swSelFACES
+    jbSels.MarkTypeForCollection swSelDATUMPLANES
+    
+    Dim SelectionDict As Scripting.Dictionary
+    Set SelectionDict = jbSels.CreateScriptingDictionary(swModel.SelectionManager)
+
+    If SelectionDict.Exists(swSelFACES) Then
+        For Each Face In SelectionDict(swSelFACES)
+            Debug.Print Face.GetArea
+        Next
+    End If
+    
+    If SelectionDict.Exists(swSelDIMENSIONS) Then
+        For Each DispDim In SelectionDict(swSelDIMENSIONS)
+            Debug.Print DispDim.GetDimension.FullName
+        Next
+    End If
+    
+    If SelectionDict.Exists(swSelectType_e.swSelDATUMPLANES) Then
+        For Each Plane In SelectionDict(swSelDATUMPLANES)
+            Debug.Print Plane.Name
+        Next
+    End If
+    
+    Dim jbDoc As New JBLib.Document
+    
+    jbDoc.Init swModel
+    
+    For Each Feature In jbDoc.FilterFeatures(swSelectType_e.swSelSKETCHES, "*1")
+        Debug.Print Feature.Name
+    Next
+    
+End Sub
