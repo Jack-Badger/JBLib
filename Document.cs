@@ -20,11 +20,11 @@ namespace JBLib
     {
         private IModelDoc2 model;
 
-        public IAttachedDocuments AttachedDocuments { get; private set; }
-
         public Document()
         {
         }
+
+        public IAttachedDocuments AttachedDocuments { get; private set; }
 
         /// <inheritdoc/>
         public IModelDoc2 Model { get => model; private set => model = value; }
@@ -43,7 +43,6 @@ namespace JBLib
 
         public void Update()
         {
-            
         }
 
         /// <inheritdoc/>

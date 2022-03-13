@@ -4,14 +4,13 @@
 
 namespace JBLib
 {
+    using System.Runtime.InteropServices;
     using SldWorks;
     using SwConst;
-    using System.Runtime.InteropServices;
 
     [ComVisible(true)]
     [Guid("66AF1BD8-D9A0-4156-85C4-7356A8066785")]
     [ClassInterface(ClassInterfaceType.None)]
-    [ProgId("JBLib.Class1")]
     public class JBSW : IJBSW
     {
         private ISldWorks app;
